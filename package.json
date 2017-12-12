@@ -1,0 +1,21 @@
+{
+  "name": "MathAnything",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha -r ts-node/register ./src/Tests/** --recursive"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/chai": "^4.0.8",
+    "@types/mocha": "^2.2.44",
+    "@types/node": "^8.0.54",
+    "chai": "^4.1.2",
+    "mocha": "^4.0.1",
+    "ts-node": "^4.0.1",
+    "typescript": "^2.6.2"
+  },
+  "dependencies": {}
+}
