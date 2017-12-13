@@ -5,6 +5,7 @@ export interface _m extends Math {
 	isPrime: ( x: number ) => boolean;
 	gcd: ( ...args ) => number;
 	cbrt: ( x: number ) => number;
+	numberToString:(n:number)=>string;
 }
 
 export const _m: _m = Object.create( Math );
@@ -20,7 +21,7 @@ _m.sum = ( arg: Array<number> | number, ...args: Array<number> ) => {
 	return Number( sum );
 };
 
-_m.isPrime = ( num ) => {
+_m.isPrime        = ( num ) => {
 	if ( num < 2 ) {
 		return false;
 	}
@@ -33,11 +34,38 @@ _m.isPrime = ( num ) => {
 
 	return true;
 };
-_m.gcd     = ( ...args ) => {
+_m.gcd            = ( ...args ) => {
 	let d = Math.min.apply( Math, args );
 	for ( let n = args.length, i = 0; d > 1 && n > i; args[ i ] % d === 0 ? i++ : (d--, i = 0) ) ;
 	return d;
 	/*
 	https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math
 	 */
+};
+_m.numberToString = ( num ) => {
+	let numStr = String( num );
+
+	if ( Math.abs( num ) < 1.0 ) {
+		let e = parseInt( num.toString()
+			.split( "e-" )[ 1 ] );
+		if ( e ) {
+			let negative = num < 0;
+			if ( negative ) num *= -1;
+			num *= Math.pow( 10, e - 1 );
+			numStr = "0." + (new Array( e )).join( "0" ) + num.toString()
+				.substring( 2 );
+			if ( negative ) numStr = "-" + numStr;
+		}
+	}
+	else {
+		let e = parseInt( num.toString()
+			.split( "+" )[ 1 ] );
+		if ( e > 20 ) {
+			e -= 20;
+			num /= Math.pow( 10, e );
+			numStr = num.toString() + (new Array( e + 1 )).join( "0" );
+		}
+	}
+
+	return numStr;
 };
