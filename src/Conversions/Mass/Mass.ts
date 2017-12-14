@@ -29,15 +29,17 @@ export class Mass {
 			//TODO: finish here
 			if(newBase === 'ounce'){
 
+				return value
 			}
 		}
 		else{
+
 			if(oldBase === 'gram' && newBase === 'ounce'){
 				let baseValue=this.baseConvert(oldUnit.unitName,"gram",value)
 				return baseValue / 28.34952;
 			}
-			if(oldUnit === 'ounce' && newUnit === 'gram'){
-				let baseValue=this.baseConvert(oldUnit.unitName,"gram",value)
+			if(oldBase === 'ounce' && newBase === 'gram'){
+				let baseValue=this.baseConvert(oldUnit.unitName,"ounce",value)
 				return baseValue * 28.34952;
 			}
 		}

@@ -48,7 +48,7 @@ let Kilogram = ( b: number ) => {
 let Gram     = ( b: number ) => {
 	return new Grams( b, "gram" );
 };
-console.log( Kilogram( 1 ).toGram().value ); //1000
+/*console.log( Kilogram( 1 ).toGram().value ); //1000
 console.log( Kilogram( 1 ).toGram().unitName ); //Gram
 console.log( Kilogram( 1 ).toGram().unit ); // g
 console.log( Kilogram( 1 ).toGram().unitName,Kilogram( 1 ).toGram().baseUnit ); // Gram
@@ -56,5 +56,5 @@ console.log( Kilogram( 1 ).unitName,Kilogram( 1 ).baseUnit ); // Gram
 console.log( Kilogram( 1 ).toGram().toDisplay() ); //1000 g
 console.log( Kilogram( 1 ).toGram().toDisplay( "long" ) ); //1000 Gram
 console.log( Gram( 1 ).toKilogram().value ); // 0.001
-console.log( Gram( 200 ).toOunce().value ); // 7.054793167573913
+console.log( Gram( 200 ).toOunce().value ); // 7.054793167573913*/
 
