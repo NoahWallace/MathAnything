@@ -1,13 +1,3 @@
-export interface _m extends Math {
-	add: ( a: number, b: number ) => number;
-	sum: ( arg: Array<number> | number, ...args: Array<number> ) => number;
-	nthrt: ( x: number, radical: number ) => number;
-	isPrime: ( x: number ) => boolean;
-	gcd: ( ...args ) => number;
-	cbrt: ( x: number ) => number;
-	numberToString: ( n: number ) => string;
-}
-
 export class MA {
 	public static add ( a, b ) {
 		return a + b;

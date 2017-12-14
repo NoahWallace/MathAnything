@@ -60,7 +60,8 @@ export const metric = {
 		standard: "metric",
 		fromBase: { factor: 3 },
 	},
-	gram    : { baseUnit: "gram",
+	gram    : {
+		baseUnit: "gram",
 		unit    : "g",
 		unitName: "gram",
 		standard: "metric",
