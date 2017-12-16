@@ -1,6 +1,7 @@
 
 import { MA } from "../../Operations/Root";
-import { metric, uscs } from "./units";
+import { metric, uscs, TStandard } from "./units";
+
 
 export class Mass {
 	value;
@@ -15,39 +16,53 @@ export class Mass {
 		let oldBase=oldUnit.baseUnit;
 		let newBase=newUnit.baseUnit;
 		if(oldBase === newBase){
-			if(newBase === 'gram') {
-				let pow = 0;
-				if ( newUnit.fromBase.factor <= oldUnit.fromBase.factor ) {
-					pow = newUnit.fromBase.factor + oldUnit.fromBase.factor;
-				}
-				else {
-					pow = oldUnit.fromBase.factor - newUnit.fromBase.factor;
-				}
-				return value * Math.pow( 10, pow )
+			//console.log(value, oldUnit)
+			//console.log(value, newUnit)
 
-			}
-			//TODO: finish here
-			if(newBase === 'ounce'){
+			 if(newBase === 'kilogram') {
+			 	let pow = 0;
+			 	if ( newUnit.fromBase.factor > oldUnit.fromBase.factor ) {
 
-				return value
-			}
+			 		pow = oldUnit.fromBase.factor - newUnit.fromBase.factor;
+			 	}
+			 	else if(newUnit.fromBase.factor === oldUnit.fromBase.factor){
+
+			 		pow=0
+				}
+			 	else {
+
+			 		pow = oldUnit.fromBase.factor - newUnit.fromBase.factor;
+			 	}
+
+			 	return value * Math.pow( 10, pow )
+
+			 }
+			 //TODO: finish here
+			 if(newBase === 'ounce'){
+
+			 	return value
+			 }
 		}
 		else{
 
-			if(oldBase === 'gram' && newBase === 'ounce'){
-				let baseValue=this.baseConvert(oldUnit.unitName,"gram",value)
+			if(oldBase === 'kilogram' && newBase === 'ounce'){
+				let baseValue=this.baseConvert(oldUnit,"gram",value)
 				return baseValue / 28.34952;
 			}
-			if(oldBase === 'ounce' && newBase === 'gram'){
-				let baseValue=this.baseConvert(oldUnit.unitName,"ounce",value)
+			if(oldBase === 'ounce' && newBase === 'kilogram'){
+				let baseValue=this.baseConvert(oldUnit,"ounce",value)
 				return baseValue * 28.34952;
 			}
 		}
 	}
 
-	protected static baseConvert ( fromUnitName, toUnitName, value ) {
-		let oldUnit = metric[ fromUnitName ] || uscs[ fromUnitName ];
-		let newUnit = metric[ toUnitName ]|| uscs[ toUnitName ];
+	protected static baseConvert ( oldUnit, toUnitName, value ) {
+		let newUnitCollection;
+
+		if(metric.hasOwnProperty(toUnitName)){newUnitCollection=metric}
+		if(uscs.hasOwnProperty(toUnitName)){newUnitCollection=uscs}
+		if(!newUnitCollection){throw new Error(`Unit "${toUnitName}" is not defined in Schema`)}
+		let newUnit = newUnitCollection[ toUnitName ];
 		return this.getBaseConversion(oldUnit,newUnit,value)
 	}
 

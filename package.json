@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha -r ts-node/register ./src/Tests/** --recursive"
+    "test": "mocha -r ts-node/register ./src/Tests/* --recursive",
+    "build":"tsc --pretty"
   },
   "author": "",
   "license": "ISC",
