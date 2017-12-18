@@ -18,11 +18,11 @@ export const uscs = {
 		fromBase: { factor: 27.34375 },//27 11/32 of grain
 	},
 	ounce:{
-		baseUnit: "ounce",
+		baseUnit: "gram",
 		unit    : "oz",
 		unitName: "ounce",
 		standard: "USCS",
-		fromBase: { factor: 1 }, //16 dr
+		fromBase: { factor:28.34952  }, //16 dr
 	},
 	pound:{
 		baseUnit: "ounce",
@@ -77,21 +77,21 @@ export const metric = {
 		unit    : "Gt",
 		unitName: "gigaton",
 		standard: "metric",
-		fromBase: { factor: 12, factorType:'power' },
+		fromBase: { factor: Math.pow(10,12) },
 	},
 	megaton:{
 		baseUnit: "kilogram",
 		unit    : "Mt",
 		unitName: "megaton",
 		standard: "metric",
-		fromBase: { factor: 9, factorType:'power' },
+		fromBase: { factor:  Math.pow(10,9) },
 	},
 	tonne:{
 		baseUnit: "kilogram",
 		unit    : "t",
 		unitName: "tonne",
 		standard: "metric",
-		fromBase: { factor:  3, factorType:'power' },
+		fromBase: { factor:   Math.pow(10,3) },
 	},
 	get metricton(){return this.tonne},
 
@@ -102,42 +102,42 @@ export const metric = {
 		unit    : "kg",
 		unitName: "kilogram",
 		standard: "metric",
-		fromBase: { factor:  0, factorType:'power' },
+		fromBase: { factor:  Math.pow(10,0) },
 	},
 	gram    : {
 		baseUnit: "kilogram",
 		unit    : "g",
 		unitName: "gram",
 		standard: "metric",
-		fromBase: { factor:  -3, factorType:'power' },
+		fromBase: { factor:   Math.pow(10,-3) },
 	},
 	milligram:{
 		baseUnit: "kilogram",
 		unit    : "mg",
 		unitName: "milligram",
 		standard: "metric",
-		fromBase: { factor: -6, factorType:'power' },
+		fromBase: { factor:  Math.pow(10,-6) },
 	},
 	microgram:{
 		baseUnit: "kilogram",
 		unit    : "μg",
 		unitName: "microgram",
 		standard: "metric",
-		fromBase: { factor:  -9, factorType:'power' },
+		fromBase: { factor:   Math.pow(10,-9) },
 	},
 	nanogram:{
 		baseUnit: "kilogram",
 		unit    : "ng",
 		unitName: "nanogram",
 		standard: "metric",
-		fromBase: { factor:  -12, factorType:'power'},
+		fromBase: { factor:   Math.pow(10,-12)},
 	},
 	picogram:{
 		baseUnit: "kilogram",
 		unit    : "ng",
 		unitName: "picogram",
 		standard: "metric",
-		fromBase: { factor:  -15, factorType:'power' },
+		fromBase: { factor:   Math.pow(10,-15) },
 	},
 
 

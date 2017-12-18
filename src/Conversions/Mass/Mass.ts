@@ -15,11 +15,20 @@ export class Mass {
 	private static getBaseConversion(oldUnit,newUnit,value){
 		let oldBase=oldUnit.baseUnit;
 		let newBase=newUnit.baseUnit;
-		if(oldBase === newBase){
-			//console.log(value, oldUnit)
-			//console.log(value, newUnit)
+		if(oldBase !== newBase){
+			console.log(value, oldUnit)
+			console.log(value, newUnit)
 
-			 if(newBase === 'kilogram') {
+			return this.baseConvert(newUnit,newUnit.baseUnit,oldUnit.value)
+		}
+		if(oldBase === newBase){
+
+			if(oldUnit.baseName===newUnit.baseUnit){return value}
+			else{
+
+				return value * (oldUnit.fromBase.factor / newUnit.fromBase.factor)
+			}
+/*			 if(newBase === 'kilogram') {
 			 	let pow = 0;
 			 	if ( newUnit.fromBase.factor > oldUnit.fromBase.factor ) {
 
@@ -41,7 +50,7 @@ export class Mass {
 			 if(newBase === 'ounce'){
 
 			 	return value
-			 }
+			 }*/
 		}
 		else{
 
